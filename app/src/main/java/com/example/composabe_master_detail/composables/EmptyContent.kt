@@ -24,39 +24,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composabe_master_detail.viewmodels.CategoriesVM
 
 @Composable
-fun StatisticsList(id: Int) {
-    val categoriesVM = viewModel<CategoriesVM>(key = id.toString())
-    LaunchedEffect(key1 = categoriesVM) {
-        categoriesVM.load(id)
-    }
-    val state by categoriesVM.state.collectAsState()
+fun EmptyContent() {
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (state == null) {
-            CircularProgressIndicator()
-        } else {
-            Text(
-                text = "Selling places for ${state?.name}",
-                style = MaterialTheme.typography.headlineLarge
-            )
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                state!!.countrySales.forEach { country ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(15.dp)
-                    ) {
-                        Text(text = country)
-                    }
-                }
-            }
-        }
+        Text(
+            text = "Select a category on the left",
+            style = MaterialTheme.typography.headlineLarge,
+            textAlign = TextAlign.Center
+        )
+
     }
 }

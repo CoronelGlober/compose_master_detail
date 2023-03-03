@@ -4,25 +4,19 @@
     "parentId": -1,
     "name": "Root",
     "groups": [
-
     ],
-    "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
-    ]
+    "countrySales": []
   },
   {
     "id": 20,
     "parentId": 0,
     "name": "Sodas",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Sodas in America",
+      "Sodas in Central America",
+      "Sodas in South America"
     ]
   },
   {
@@ -30,12 +24,9 @@
     "parentId": 1,
     "name": "Whiskey",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Whiskey in North America"
     ]
   },
   {
@@ -43,12 +34,9 @@
     "parentId": 1,
     "name": "Champagne",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Champagne in France"
     ]
   },
   {
@@ -56,25 +44,21 @@
     "parentId": 1,
     "name": "Wine",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Wine in Argentina"
     ]
   },
   {
     "id": 1,
     "parentId": 0,
-    "name": "Alcoholic",
+    "name": "Alcohol",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Alcohol in North America",
+      "Alcohol in Central America",
+      "Alcohol in South America"
     ]
   },
   {
@@ -82,12 +66,9 @@
     "parentId": 0,
     "name": "Typical",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "All around the globe"
     ]
   },
   {
@@ -95,12 +76,9 @@
     "parentId": 2,
     "name": "Water",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Water in Colombia"
     ]
   },
   {
@@ -108,12 +86,11 @@
     "parentId": 20,
     "name": "Carbonated",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Carbonated in North America",
+      "Carbonated in Central America",
+      "Carbonated in South America"
     ]
   },
   {
@@ -121,12 +98,11 @@
     "parentId": 5,
     "name": "Original",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "CocaCola Original in North America",
+      "CocaCola Original in Central America",
+      "CocaCola Original in South America"
     ]
   },
   {
@@ -134,25 +110,23 @@
     "parentId": 5,
     "name": "Zero",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "CocaCola Zero in North America",
+      "CocaCola Zero in Central America",
+      "CocaCola Zero in South America"
     ]
   },
   {
     "id": 5,
     "parentId": 4,
-    "name": "Cocacola",
+    "name": "CocaCola",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "CocaCola in North America",
+      "CocaCola in Central America",
+      "CocaCola in South America"
     ]
   },
   {
@@ -160,12 +134,11 @@
     "parentId": 6,
     "name": "Twist",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Pepsi Twist in North America",
+      "Pepsi Twist in Central America",
+      "Pepsi Twist in South America"
     ]
   },
   {
@@ -173,12 +146,11 @@
     "parentId": 4,
     "name": "Pepsi",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Pepsi in North America",
+      "Pepsi in Central America",
+      "Pepsi in South America"
     ]
   },
   {
@@ -186,12 +158,9 @@
     "parentId": 10,
     "name": "Gatorade",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Gatorade in Europe"
     ]
   },
   {
@@ -199,12 +168,9 @@
     "parentId": 10,
     "name": "Hidration",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Hidration in North America"
     ]
   },
   {
@@ -212,12 +178,21 @@
     "parentId": 20,
     "name": "Sports",
     "groups": [
-
     ],
     "countrySales": [
-      "North America",
-      "Central America",
-      "South America"
+      "Sports in North America",
+      "Sports in Central America",
+      "Sports in South America"
+    ]
+  },
+  {
+    "id": 75,
+    "parentId": 0,
+    "name": "Guaro",
+    "groups": [
+    ],
+    "countrySales": [
+      "Medellín"
     ]
   }
 ]
