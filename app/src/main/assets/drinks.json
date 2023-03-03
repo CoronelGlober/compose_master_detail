@@ -1,0 +1,223 @@
+[
+  {
+    "id": 0,
+    "parentId": -1,
+    "name": "Root",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 20,
+    "parentId": 0,
+    "name": "Sodas",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 13,
+    "parentId": 1,
+    "name": "Whiskey",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 14,
+    "parentId": 1,
+    "name": "Champagne",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 15,
+    "parentId": 1,
+    "name": "Wine",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 1,
+    "parentId": 0,
+    "name": "Alcoholic",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 2,
+    "parentId": 0,
+    "name": "Typical",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 16,
+    "parentId": 2,
+    "name": "Water",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 4,
+    "parentId": 20,
+    "name": "Carbonated",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 9,
+    "parentId": 5,
+    "name": "Original",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 7,
+    "parentId": 5,
+    "name": "Zero",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 5,
+    "parentId": 4,
+    "name": "Cocacola",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 8,
+    "parentId": 6,
+    "name": "Twist",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 6,
+    "parentId": 4,
+    "name": "Pepsi",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 11,
+    "parentId": 10,
+    "name": "Gatorade",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 12,
+    "parentId": 10,
+    "name": "Hidration",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  },
+  {
+    "id": 10,
+    "parentId": 20,
+    "name": "Sports",
+    "groups": [
+
+    ],
+    "countrySales": [
+      "North America",
+      "Central America",
+      "South America"
+    ]
+  }
+]
