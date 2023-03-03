@@ -22,7 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composabe_master_detail.viewmodels.CategoriesVM
 
 @Composable
-fun CategoryList(id: Int) {
+fun CategoryList(id: Int, itemClicked: (Int) -> Unit) {
     val categoriesVM = viewModel<CategoriesVM>(key = id.toString())
     LaunchedEffect(key1 = categoriesVM) {
         categoriesVM.load(id)
@@ -48,10 +48,12 @@ fun CategoryList(id: Int) {
                                 Toast.LENGTH_LONG
                             )
                             .show()
+                        itemClicked(drink.id)
                     }
                     .padding(15.dp)
                 ) {
-                    Text(text = drink.name)
+                    val rightArrow = if (drink.groups.isNotEmpty()) " ->" else ""
+                    Text(text = drink.name + rightArrow)
                 }
             }
         }

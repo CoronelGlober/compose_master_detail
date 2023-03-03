@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import com.example.composabe_master_detail.Routes.CATEGORIES
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = Routes.MASTER.route
                 ) {
-                    setupScreens(supportsMasterDetail)
+                    setupScreens(supportsMasterDetail, navController)
                 }
             }
         }
@@ -56,20 +57,25 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalAnimationApi::class)
 private fun NavGraphBuilder.setupScreens(
-    supportsMasterDetail: Boolean
+    supportsMasterDetail: Boolean,
+    navController: NavController
 ) {
 
     composable(Routes.MASTER.route) {
         if (supportsMasterDetail) {
             MasterDetailContent(id = 0)
         } else {
-            CategoryList(id = 0)
+            CategoryList(id = 0) {
+                navController.navigate(CATEGORIES.withArgs(it.toString()))
+            }
         }
     }
 
     composable(CATEGORIES.route) {
         val categoryUid = it.arguments?.getString(CATEGORIES.arg).orEmpty()
-        CategoryList(id = categoryUid.toInt())
+        CategoryList(id = categoryUid.toInt()) {
+            navController.navigate(CATEGORIES.withArgs(it.toString()))
+        }
     }
 
     composable(DETAILS.route) {
@@ -89,13 +95,17 @@ fun MasterDetailContent(id: Int) {
                 .width(MASTER_PANE_WIDTH.dp)
                 .fillMaxHeight()
         ) {
-            CategoryList(id = id)
+            CategoryList(id = id) {
+                childNavController.navigate(CATEGORIES.withArgs(id.toString()))
+            }
         }
 
-        Box(modifier = Modifier
-            .width(2.dp)
-            .fillMaxHeight()
-            .background(color = Color.Gray))
+        Box(
+            modifier = Modifier
+                .width(2.dp)
+                .fillMaxHeight()
+                .background(color = Color.Gray)
+        )
 
 
         AnimatedNavHost(
@@ -103,7 +113,7 @@ fun MasterDetailContent(id: Int) {
             navController = childNavController,
             startDestination = Routes.DETAILS.route
         ) {
-            setupScreens(false)
+            setupScreens(false, childNavController)
         }
     }
 }
