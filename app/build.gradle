@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.10'
+    id "kotlin-parcelize" // Apply the plugin for Android
 }
 
 android {
@@ -68,5 +69,8 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1'
-
+    implementation "com.arkivanov.decompose:decompose:1.0.0"
+    implementation("com.arkivanov.essenty:lifecycle:1.0.0")
+    implementation "com.arkivanov.decompose:extensions-compose-jetpack:1.0.0"
+    implementation "com.arkivanov.essenty:parcelable:1.0.0"
 }
