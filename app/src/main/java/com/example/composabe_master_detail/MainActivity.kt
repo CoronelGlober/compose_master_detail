@@ -3,7 +3,6 @@ package com.example.composabe_master_detail
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
@@ -23,32 +22,19 @@ import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.plus
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.scale
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.stackAnimation
+import com.arkivanov.decompose.extensions.compose.jetpack.subscribeAsState
 import com.arkivanov.decompose.router.stack.backStack
 import com.example.composabe_master_detail.components.RootComponent
 import com.example.composabe_master_detail.components.RootComponentImpl
 import com.example.composabe_master_detail.composables.CategoryList
 import com.example.composabe_master_detail.composables.EmptyContent
 import com.example.composabe_master_detail.composables.StatisticsList
-import com.example.composabe_master_detail.routes.defineRoutes
-import com.example.composabe_master_detail.routes.Routes
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-
-// Same size set in LogBaseFragment in dpi
-internal const val MASTER_PANE_WIDTH = 300
-
-// Same size used in the xml configuration file in dpi
-internal const val MASTER_DETAIL_MINIMUM_SCREEN_WIDTH = 738
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DB.initialize(applicationContext.assets)
-        val root =
-            RootComponentImpl(
-                componentContext = defaultComponentContext(),
-            )
-
+        val root = RootComponentImpl(componentContext = defaultComponentContext())
         setContent {
             MaterialTheme {
                 Surface {
@@ -60,8 +46,8 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun RootContent(component: RootComponent, modifier: Modifier = Modifier) {
-
         val isMultiPane by component.isMultiPane.collectAsState()
+        val stack by component.stack.subscribeAsState()
         BoxWithConstraints(modifier = modifier) {
             when {
                 isMultiPane -> Row(modifier = Modifier.fillMaxSize()) {
@@ -70,7 +56,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxHeight()
                             .weight(0.4F)
                     ) {
-                        CategoryList(id = 0, navigateToChildren = {}, showCategoryStatistics = {})
+                        CategoryList(component.initialListComponent)
                     }
 
                     Box(
@@ -78,34 +64,27 @@ class MainActivity : ComponentActivity() {
                             .fillMaxHeight()
                             .weight(0.6F)
                     ) {
-                        Children(stack = component.stack) {
+                        Children(stack = stack) {
                             when (val child = it.instance) {
-                                is RootComponent.Child.DetailsChild -> StatisticsList(0)
+                                is RootComponent.Child.DetailsChild -> StatisticsList(child.component)
                                 is RootComponent.Child.EmptyContent -> EmptyContent()
-                                is RootComponent.Child.ListChild -> CategoryList(
-                                    id = 0,
-                                    navigateToChildren = {},
-                                    showCategoryStatistics = {})
+                                is RootComponent.Child.ListChild -> CategoryList(child.component)
                             }
                         }
                     }
                 }
 
                 else -> {
-
-                    if (component.stack.backStack.size > 1) {
-                        Children(stack = component.stack) {
+                    if (stack.backStack.size > 1) {
+                        Children(stack = stack, animation = stackAnimation(fade() + scale())) {
                             when (val child = it.instance) {
-                                is RootComponent.Child.DetailsChild -> StatisticsList(0)
+                                is RootComponent.Child.DetailsChild -> StatisticsList(child.component)
                                 is RootComponent.Child.EmptyContent -> EmptyContent()
-                                is RootComponent.Child.ListChild -> CategoryList(
-                                    id = 0,
-                                    navigateToChildren = {},
-                                    showCategoryStatistics = {})
+                                is RootComponent.Child.ListChild -> CategoryList(child.component)
                             }
                         }
                     } else {
-                        CategoryList(id = 0, navigateToChildren = {}, showCategoryStatistics = {})
+                        CategoryList(component.initialListComponent)
                     }
                 }
 

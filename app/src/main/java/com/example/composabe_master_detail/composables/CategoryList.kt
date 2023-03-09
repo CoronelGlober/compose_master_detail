@@ -22,20 +22,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composabe_master_detail.R
+import com.example.composabe_master_detail.components.ListComponent
 import com.example.composabe_master_detail.viewmodels.CategoriesVM
 
 @Composable
 fun CategoryList(
-    id: Int,
+    component: ListComponent,
     categoriesHeader: @Composable (() -> Unit)? = null,
-    navigateToChildren: (Int) -> Unit,
-    showCategoryStatistics: (Int) -> Unit
 ) {
-    val categoriesVM = viewModel<CategoriesVM>(key = id.toString())
-    LaunchedEffect(key1 = categoriesVM) {
-        categoriesVM.load(id)
-    }
-    val state by categoriesVM.state.collectAsState()
+    val state by component.vm.state.collectAsState()
     Column {
         if (categoriesHeader != null) {
             categoriesHeader()
@@ -44,7 +39,7 @@ fun CategoryList(
                 Text(text = state?.name.orEmpty(), style = MaterialTheme.typography.headlineLarge)
                 Button(
                     modifier = Modifier.align(Alignment.CenterEnd),
-                    onClick = { showCategoryStatistics(id) },
+                    onClick = { component.showCategoryStatistics(component.currentId) },
                 ) {
                     Text(text = "Show sales")
                 }
@@ -63,9 +58,9 @@ fun CategoryList(
                         .fillMaxWidth()
                         .clickable {
                             if (drink.groups.isNotEmpty()) {
-                                navigateToChildren(drink.id)
+                                component.navigateToChildren(drink.id)
                             } else {
-                                showCategoryStatistics(drink.id)
+                                component.showCategoryStatistics(drink.id)
                             }
                         }
                         .padding(15.dp)

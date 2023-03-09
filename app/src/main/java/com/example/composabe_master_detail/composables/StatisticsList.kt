@@ -21,15 +21,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.composabe_master_detail.components.DetailsComponent
+import com.example.composabe_master_detail.components.ListComponent
 import com.example.composabe_master_detail.viewmodels.CategoriesVM
 
 @Composable
-fun StatisticsList(id: Int) {
-    val categoriesVM = viewModel<CategoriesVM>(key = id.toString())
-    LaunchedEffect(key1 = categoriesVM) {
-        categoriesVM.load(id)
-    }
-    val state by categoriesVM.state.collectAsState()
+fun StatisticsList(component: DetailsComponent) {
+    val state by component.vm.state.collectAsState()
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

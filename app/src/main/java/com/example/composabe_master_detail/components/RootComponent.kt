@@ -7,6 +7,7 @@ import com.example.composabe_master_detail.viewmodels.CategoriesVM
 import kotlinx.coroutines.flow.StateFlow
 
 interface RootComponent {
+    val initialListComponent: ListComponent
     val vm: CategoriesVM
     val stack: Value<ChildStack<*, Child>>
     val isMultiPane: StateFlow<Boolean>
@@ -21,6 +22,7 @@ interface RootComponent {
 }
 
 interface ListComponent {
+    val currentId:Int
     val vm: CategoriesVM
     fun navigateToChildren(id: Int)
     fun showCategoryStatistics(id: Int)
@@ -28,6 +30,7 @@ interface ListComponent {
 
 interface DetailsComponent {
     val vm: CategoriesVM
+    val currentId:Int
 }
 
 interface EmptyComponent

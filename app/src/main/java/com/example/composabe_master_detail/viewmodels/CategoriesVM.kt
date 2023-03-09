@@ -12,7 +12,7 @@ class CategoriesVM : ViewModel() {
     val state = MutableStateFlow<Drink?>(null)
 
     suspend fun load(id: Int) {
-        delay(500)
+        //delay(500)
         val children = DB.getByParent(id).map { it.copy(groups = DB.getByParent(it.id)) }
         state.emit(DB.getById(id).copy(groups = children))
     }
